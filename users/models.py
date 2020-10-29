@@ -14,7 +14,6 @@ class Profile(models.Model):
 	]
 	user = models.OneToOneField(User, on_delete=models.CASCADE, default='')
 	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-	# programming_language = models.CharField(default='python', max_length=30)
 	programming_language = models.CharField(default='Python', max_length=30, choices=PROGRAMMING_LANGUAGES_CHOICES)
 
 	def __str__(self):
