@@ -10,7 +10,7 @@
               <small class="text-muted">{{ session.start_time|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'session-detail' session.id %}">{{ session.title }}</a></h2>
-<!--            <p class="article-content">{{ session.note }}</p>-->
+            <p class="article-content">{{ session.note }}</p>
           </div>
         </article>
     {% endfor %}
