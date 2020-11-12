@@ -1,0 +1,141 @@
+.container-fluid {
+    padding-right: 10%;
+    padding-left: 10%;
+    /*width:200px;*/
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.border {
+    border: 0px solid #fff !important;
+}
+
+#meet {
+    position: absolute;
+    right: 0;
+    position: -webkit-sticky;
+}
+
+
+textarea.form-control {
+    height: 300px;
+}
+.form-control{
+    padding-left:10px ;
+    padding-top:10px ;
+        font-size:13px;
+
+}
+
+.custom-select {
+    margin-left: 2%;
+    margin-top: 10px;
+}
+
+.form-group1 {
+    margin-left: 2%;
+    width: 50%;
+
+    margin-bottom: 10px;
+}
+
+div.form-group2 {
+    margin-left: 2%;
+    width: 50%;
+
+}
+
+.form-control#script_result {
+    height: 100px;
+    border-radius: 0;
+    margin-top: 0px;
+
+
+}
+
+.form-control#script_text_area {
+    height: 250px;
+
+    border-radius: 0;
+
+}
+
+.buttons {
+    margin-left: 2%;
+    margin-top:0px;
+}
+
+#meet {
+    position: absolute;
+    right: 0;
+}
+
+button#run_python_script {
+    background: #0376da;
+    border-color: #0376da;
+    border-radius: 0;
+
+}
+
+button#submit {
+    background: #0376da;
+    border-color: #0376da;
+    border-radius: 0;
+}
+
+button#download {
+    background: #888888;
+    border-color: #888888;
+    border-radius: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #64b2c3;
+    background-image: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    height: 3em;
+    line-height: 3;
+    background: #2c3e50;
+    overflow: hidden;
+    margin-left: 2%;
+    margin-top: 20px;
+    width: 120px;
+
+}
+
+select {
+    flex: 1;
+    padding: 0 .5em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    cursor: pointer;
+    pointer-events: none;
+    color: white;
+}
+
+.select:hover::after {
+    color: #0376da;
+}

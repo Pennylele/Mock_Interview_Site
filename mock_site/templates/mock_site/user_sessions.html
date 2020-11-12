@@ -9,7 +9,7 @@
               <a class="mr-2" href="{% url 'user-sessions' session.participant.username %}">{{ session.participant }}</a>
               <small class="text-muted">{{ session.start_time|date:"F d, Y" }}</small>
             </div>
-            <h2><a class="article-title" href="{% url 'session-detail' session.id %}">{{ session.title }}</a></h2>
+            <h2 class="article-title">{{ session.title }}</h2>
             <p class="article-content">{{ session.note }}</p>
           </div>
         </article>

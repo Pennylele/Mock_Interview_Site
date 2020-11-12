@@ -1,5 +1,14 @@
 {% extends "mock_site/base.html" %}
+{% load static %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mock_site/css/code-editor.css' %}">
+{% endblock %}
+
+{% block right-handbar %}<div id="meet"></div>{% endblock %}
+
 {% block content %}
+{% comment %}
+<!-- can possibly desert -->
 	<article class="media content-section">
 	  <img class="rounded-circle article-img" src="{{ session.participant.profile.image.url }}">
 	  <div class="media-body">
@@ -11,4 +20,54 @@
 	    <p class="article-content">{{ object.content }}</p>
 	  </div>
 	</article>
-{% endblock content %}
+{% endcomment %}
+
+<!-- code editor code -->
+	<div class="select">
+		<label for="slct"></label><select name="slct" id="slct">
+		<option value="python">Python</option>
+		<option value="ruby">Ruby</option>
+		<option value="cpp">C++</option>
+		<option value="c">C</option>
+		<option value="java">Java</option>
+		<option value="javascript">JavaScript</option>
+	</select>
+	</div>
+
+	<!--First Column-->
+	<div class="main">
+		<div class="form-group1">
+			<label for="script_text_area">
+			</label><textarea class="form-control" id="script_text_area" rows="20"
+							  style="background-color:#dddddd4f; color:#000000;">print(123)
+	print('abc')
+
+
+	def add(a, b):
+		return a + b
+
+
+	add(1, 2)
+	</textarea></div>
+	<!--second column-->
+		<div class="form-group2">
+			<label for="script_result"></label><textarea class="form-control" id="script_result" rows="20"
+														 readonly="readonly"
+														 style="background-color:#dddddd;color:#333333;"></textarea>
+		</div>
+		<div class="buttons">
+			<button type="button" class="btn btn-success flow-left mt-5" id="run_python_script">Run Code</button>
+			<button type="button" class="btn btn-success flow-left mt-5" id="download_code">Download Code</button>
+			<button type="button" class="btn btn-danger flow-left mt-5" id="reset_code">Reset</button>
+		</div>
+	</div>
+
+
+
+{% endblock %}
+{% block script %}
+<script src="{% static 'mock_site/js/video.js' %}"></script>
+<script src="{% static 'mock_site/js/code-editor-1.js' %}"></script>
+<script src="{% static 'mock_site/js/code-editor-2.js' %}"></script>
+<script src="{% static 'mock_site/js/code-editor-3.js' %}"></script>
+{% endblock %}
