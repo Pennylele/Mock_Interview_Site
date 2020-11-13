@@ -1,11 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from urllib import request
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-# from django.core.mail import send_mail
+from django.core.mail import send_mail
 from django.views.generic import (
-	ListView,
-	DetailView,
-	CreateView,
+    ListView,
+    DetailView,
+    CreateView,
 )
 from .models import Session
 # Code editor import
@@ -23,32 +25,51 @@ def home(request):
 
 
 def session(request):
-	context = {'sessions': Session.objects.all()}
-	return render(request, 'mock_site/user_sessions.html')
+    context = {'sessions': Session.objects.all()}
+    return render(request, 'mock_site/user_sessions.html')
 
 
 class UserSessionListView(ListView):
-	model = Session
-	template_name = 'mock_site/user_sessions.html'
-	context_object_name = 'sessions'
-	paginate_by = 5
+    model = Session
+    template_name = 'mock_site/user_sessions.html'
+    context_object_name = 'sessions'
+    paginate_by = 5
 
-	def get_queryset(self):
-		user = get_object_or_404(User, username=self.kwargs.get('username')) # This is to get the username from the URL
-		return Session.objects.filter(participant=user).order_by('-start_time')
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username')) # This is to get the username from the URL
+        return Session.objects.filter(participant=user).order_by('-start_time')
 
 
 class SessionDetailView(DetailView):
-	model = Session
+    model = Session
 
 
 class SessionCreateView(LoginRequiredMixin, CreateView):
-	model = Session
-	fields = ['title', 'note', 'invitee_email']
+    model = Session
+    fields = ['title', 'note', 'invitee_email']
 
-	def form_valid(self, form):
-		form.instance.participant = self.request.user
-		return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.participant = self.request.user
+        subject = 'Mock Interview Invitation'
+        message = "Hello,\n\nYour friend {} is inviting you to join a mock interview session. Click {} to join this session.".format \
+            (self.request.user, 'http://127.0.0.1:8000/session/'+str(form.instance.video_id))
+        receiver = form.instance.invitee_email
+
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            [receiver],
+            fail_silently=False)
+
+        messages.add_message(
+            message=('Email sent.'),
+            request=self.request,
+            level=messages.SUCCESS
+        )
+
+        return super().form_valid(form)
+
 
 # Code Editor code
 def run(cmd):
