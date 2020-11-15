@@ -66,6 +66,34 @@
 
 {% endblock %}
 {% block script %}
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+$(document).on("click", '#run_python_script', function (e) {
+    let txt = $('#script_text_area').val();
+    console.log(txt);
+
+    var e = document.getElementById("slct");
+    let language = e.options[e.selectedIndex].value;
+    $.ajax({
+        url: "{% url 'result' %}",
+        type: "POST",
+        data: {
+            'script': txt,
+            'language': language,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            $("#script_result").val(data["output"]);
+        },
+        error: function (data) {
+            console.log("error");
+            console.log(data);
+        }
+    });
+});
+</script>
 <script src="{% static 'mock_site/js/video.js' %}"></script>
 <script src="{% static 'mock_site/js/code-editor-1.js' %}"></script>
 <script src="{% static 'mock_site/js/code-editor-2.js' %}"></script>

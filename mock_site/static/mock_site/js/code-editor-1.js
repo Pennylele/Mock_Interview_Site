@@ -1,29 +1,3 @@
-$(document).on("click", '#run_python_script', function (e) {
-    let txt = $('#script_text_area').val();
-    console.log(txt);
-
-    var e = document.getElementById("slct");
-    let language = e.options[e.selectedIndex].value;
-    $.ajax({
-        url: "{% url 'result' %}",
-        type: "POST",
-        data: {
-            'script': txt,
-            'language': language,
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-        },
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            $("#script_result").val(data["output"]);
-        },
-        error: function (data) {
-            console.log("error");
-            console.log(data);
-        }
-    });
-});
-
 $(document).on("click", '#download_code', function (e) {
     function saveFile(name, type, data) {
         if (data !== null && navigator.msSaveBlob)
