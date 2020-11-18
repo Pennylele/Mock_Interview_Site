@@ -1,6 +1,7 @@
 {% extends "mock_site/base.html" %}
 {% block content %}
     {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}!</p>
         <button type="button" class="btn btn-info" id="session"><a id="session-creation" class="nav-item nav-link" href="{% url 'session-create' %}">New Session</a></button>
     {% else %}
         <p>Register with us to start mock interviews with your buddy!</p>

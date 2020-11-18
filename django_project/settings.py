@@ -26,7 +26,8 @@ SECRET_KEY = os.environ.get('mock_secrete_key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['167.172.158.115', '127.0.0.1']
+
+ALLOWED_HOSTS = ['167.172.158.115', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -41,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels'
+    'channels',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', # add for All-Auth
 ]
 
 ROOT_URLCONF = 'django_project.urls'
@@ -67,10 +70,26 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',   # add for All-Auth
+                'social_django.context_processors.login_redirect',  # add for All-Auth
+
             ],
         },
     },
 ]
+
+
+# add for All-Auth
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 ASGI_APPLICATION = 'django_project.asgi.application'
@@ -153,6 +172,20 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+LOGOUT_URL = 'logout' # add for All-Auth
+
+# add for All-Auth
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('MOCK_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('MOCK_GITHUB_SECRET') 
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('MOCK_FACEBOOK_KEY') 
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('MOCK_FACEBOOK_SECRET')
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('MOCK_LINKEDIN_KEY')   #Client ID
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('MOCK_LINKEDIN_SECRET')  #Client Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('MOCK_GOOGLE_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('MOCK_GOOGLE_SECRET')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
