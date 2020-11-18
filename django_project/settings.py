@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
-    'social_django'
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +72,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',   # add for All-Auth
                 'social_django.context_processors.login_redirect',  # add for All-Auth
-
             ],
         },
     },
@@ -89,6 +88,20 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
 )
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
@@ -181,8 +194,8 @@ SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('MOCK_GITHUB_SECRET')
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('MOCK_FACEBOOK_KEY') 
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('MOCK_FACEBOOK_SECRET')
 
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('MOCK_LINKEDIN_KEY')   #Client ID
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('MOCK_LINKEDIN_SECRET')  #Client Secret
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('MOCK_LINKEDIN_KEY')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('MOCK_LINKEDIN_SECRET')
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('MOCK_GOOGLE_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('MOCK_GOOGLE_SECRET')

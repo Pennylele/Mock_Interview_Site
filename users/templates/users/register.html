@@ -5,7 +5,7 @@
 		<form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">
-				<legend class="border-bottom mb-4">Join Today!</legend>
+				<legend class="border-bottom mb-4">Sign up below or via your favorite social media!</legend>
 				{{ form|crispy }}
 			</fieldset>
 			<div class="form-group">
@@ -19,3 +19,22 @@
 		</div>
 	</div>
 {% endblock content %}
+{% block right-handbar %}
+	<div class="border-top pt-3">
+		<a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}">
+			<span class="fa fa-google"></span> Sign up with Google
+		</a>
+
+		<a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}">
+			<span class="fa fa-facebook"></span> Sign up with Facebook
+		</a>
+
+		<a class="btn btn-block btn-social btn-github" href="{% url 'social:begin' 'github' %}">
+			<span class="fa fa-github"></span> Sign up with Github
+		</a>
+
+		<a class="btn btn-block btn-social btn-linkedin" href="{% url 'social:begin' 'linkedin-oauth2' %}">
+			<span class="fa fa-linkedin"></span> Sign up with Linkedin
+		</a>
+	</div>
+{% endblock %}

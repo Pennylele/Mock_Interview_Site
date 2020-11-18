@@ -105,12 +105,6 @@ def run(cmd):
                                 stderr=STDOUT)
         input = subprocess.Popen(cmd, stdin=PIPE)
         print(proc.stdout.read())
-
-        # proc = subprocess.Popen(cmd,
-        #                         stdout=subprocess.PIPE,
-        #                         stderr=subprocess.PIPE,
-        #                         )
-        # stdout, stderr = proc.communicate()
         return proc.returncode, input, input
     elif language == 'c':
         proc = subprocess.Popen(cmd,
@@ -175,12 +169,6 @@ def result(request):
         err_decoded = ''
 
     data = {'output': "{0} {1}".format(out_decoded, err_decoded)}
-
-    # data = {'output': "{0} {1}".format(out.decode('utf-8'),
-    #                                    err.decode('utf-8').split('temp.rb",')[1] if err.decode('utf-8') != '' else '')}
-
-    # data = {'output': "{0} {1}".format(out.decode('utf-8'), err.decode('utf-8'))}
-    # data = {'output': "{0} {1}".format(out.decode('utf-8'), '')}
 
     return JsonResponse(data)
 
