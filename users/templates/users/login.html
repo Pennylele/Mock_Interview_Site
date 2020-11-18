@@ -21,7 +21,7 @@
 			</small>
 		</div>
 		<div class="border-top pt-3">
-			<a class="btn btn-block btn-social btn-google">
+			<a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}">
 				<span class="fa fa-google"></span> Sign in with Google
 			</a>
 
@@ -33,17 +33,10 @@
 				<span class="fa fa-github"></span> Sign in with Github
 			</a>
 
-			<a class="btn btn-block btn-social btn-linkedin">
+			<a class="btn btn-block btn-social btn-linkedin" href="{% url 'social:begin' 'linkedin-oauth2' %}">
 				<span class="fa fa-linkedin"></span> Sign in with Linkedin
 			</a>
 
-			<a class="btn btn-block btn-social btn-twitter">
-				<span class="fa fa-twitter"></span> Sign in with Twitter
-			</a>	
-
-			<a class="btn btn-block btn-social btn-instagram">
-				<span class="fa fa-instagram"></span> Sign in with Instagram
-			</a>
 
 			
 		</div>
