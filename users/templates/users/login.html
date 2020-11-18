@@ -20,5 +20,33 @@
 				Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
 			</small>
 		</div>
+		<div class="border-top pt-3">
+			<a class="btn btn-block btn-social btn-google">
+				<span class="fa fa-google"></span> Sign in with Google
+			</a>
+
+            <a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}">	
+				<span class="fa fa-facebook"></span> Sign in with Facebook
+			</a>
+
+			<a class="btn btn-block btn-social btn-github" href="{% url 'social:begin' 'github' %}">
+				<span class="fa fa-github"></span> Sign in with Github
+			</a>
+
+			<a class="btn btn-block btn-social btn-linkedin">
+				<span class="fa fa-linkedin"></span> Sign in with Linkedin
+			</a>
+
+			<a class="btn btn-block btn-social btn-twitter">
+				<span class="fa fa-twitter"></span> Sign in with Twitter
+			</a>	
+
+			<a class="btn btn-block btn-social btn-instagram">
+				<span class="fa fa-instagram"></span> Sign in with Instagram
+			</a>
+
+			
+		</div>
+
 	</div>
 {% endblock content %}
