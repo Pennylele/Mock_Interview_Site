@@ -168,8 +168,8 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout' # add for All-Auth
 
 # add for All-Auth
-SOCIAL_AUTH_GITHUB_KEY = '' 
-SOCIAL_AUTH_GITHUB_SECRET = '' 
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('MOCK_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('MOCK_GITHUB_SECERT') 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
