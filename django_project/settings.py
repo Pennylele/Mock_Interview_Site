@@ -26,7 +26,8 @@ SECRET_KEY = os.environ.get('mock_secrete_key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['167.172.158.115', '127.0.0.1']
+
+ALLOWED_HOSTS = ['167.172.158.115', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -80,7 +81,13 @@ TEMPLATES = [
 
 # add for All-Auth
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
     'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -169,7 +176,16 @@ LOGOUT_URL = 'logout' # add for All-Auth
 
 # add for All-Auth
 SOCIAL_AUTH_GITHUB_KEY = os.environ.get('MOCK_GITHUB_KEY')
-SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('MOCK_GITHUB_SECERT') 
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('MOCK_GITHUB_SECRET') 
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('MOCK_FACEBOOK_KEY') 
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('MOCK_FACEBOOK_SECRET')
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('MOCK_LINKEDIN_KEY')   #Client ID
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('MOCK_LINKEDIN_SECRET')  #Client Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('MOCK_GOOGLE_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('MOCK_GOOGLE_SECRET')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
