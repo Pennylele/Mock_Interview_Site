@@ -139,7 +139,7 @@ def run(cmd):
 def result(request):
     s = request.POST['script']
     language = request.POST['language']
-    temp_path = settings.STATIC_ROOT + "/"
+    temp_path = settings.STATIC_ROOT + "/code-editor/"
     file_name = ''
     if language == 'python':
         file_name = "temp.py"
