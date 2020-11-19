@@ -11,7 +11,6 @@ class Session(models.Model):
     start_time = models.DateTimeField(default=timezone.now)
     end_time = models.DateTimeField(default=timezone.now)
     participant = models.ForeignKey(User, on_delete=models.CASCADE)
-    #Added an email field and UUID field. Haven't migrated yet.
     invitee_email = models.EmailField(default="example@email.com")
     video_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
 

@@ -6,11 +6,11 @@
           <img class="rounded-circle article-img" src="{{ session.participant.profile.image.url }}">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-sessions' session.participant.username %}">{{ session.participant }}</a>
-              <small class="text-muted">{{ session.start_time|date:"F d, Y" }}</small>
+              <small class="text-muted">{{ session.start_time|date:"Y-m-d H:i" }} (UTC)</small>
             </div>
-            <h2 class="article-title">{{ session.title }}</h2>
-            <p class="article-content">{{ session.note }}</p>
+            <p class="article-content">Session Name: {{ session.title }}</p>
+            <p class="article-content">Session Note: {{ session.note }}</p>
+            <p class="article-content">Session Practice Buddy: {{ session.invitee_email }}</p>
           </div>
         </article>
     {% endfor %}

@@ -19,7 +19,6 @@ def register(request):
 		if form.is_valid():
 			user = form.save(commit=False)
 			if not User.objects.filter(email=user.email).exists():
-				user.is_active = False
 				form.save()
 				username = form.cleaned_data.get('username')
 				messages.success(request, f'Your account has been created! Now you are able to log in')
