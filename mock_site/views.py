@@ -28,10 +28,6 @@ def session(request):
     context = {'sessions': Session.objects.all()}
     return render(request, 'mock_site/user_sessions.html')
 
-def session_detail(request, room_name):
-    return render(request, 'mock_site/session_detail.html', {
-        'room_name': room_name
-    })
 
 class UserSessionListView(ListView):
     model = Session
