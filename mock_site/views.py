@@ -36,7 +36,7 @@ class UserSessionListView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username')) # This is to get the username from the URL
+        user = get_object_or_404(User, username=self.kwargs.get('username'))  # This is to get the username from the URL
         return Session.objects.filter(participant=user).order_by('-start_time')
 
 
@@ -50,12 +50,11 @@ class SessionCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.participant = self.request.user
-        subject = 'Mock Interview Invitation'
-        message = "Hello,\n\nYour friend {} is inviting you to join a mock interview session. Click {} to join this session.".format \
-            (self.request.user, 'http://127.0.0.1:8000/session/'+str(form.instance.video_id))
         receiver = form.instance.invitee_email
 
-
+        subject = 'Mock Interview Invitation'
+        message = "Hello,\n\nYour friend {} is inviting you to join a mock interview session. Click {} to join this session.".format \
+            (self.request.user, 'http://127.0.0.1:8000/session/' + str(form.instance.video_id))
 
         send_mail(
             subject,
@@ -69,6 +68,19 @@ class SessionCreateView(LoginRequiredMixin, CreateView):
             request=self.request,
             level=messages.SUCCESS
         )
+
+        def get_queryset(self):
+            try:
+                invitee = User.objects.get(email=receiver)
+                Session.objects.create(participant=invitee,
+                                           title=form.instance.title,
+                                           note=form.instance.note,
+                                           start_time=form.instance.start_time,
+                                           invitee_email=self.request.user.email)
+            except:
+                pass
+
+        get_queryset(self)
 
         return super().form_valid(form)
 
@@ -173,7 +185,3 @@ def result(request):
     data = {'output': "{0} {1}".format(out_decoded, err_decoded)}
 
     return JsonResponse(data)
-
-
-
-

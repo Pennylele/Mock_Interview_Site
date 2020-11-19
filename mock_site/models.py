@@ -10,7 +10,7 @@ class Session(models.Model):
     note = models.TextField()
     start_time = models.DateTimeField(default=timezone.now)
     end_time = models.DateTimeField(default=timezone.now)
-    participant = models.ForeignKey(User, on_delete=models.CASCADE)
+    participant = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     invitee_email = models.EmailField(default="example@email.com")
     video_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
 
