@@ -55,6 +55,8 @@ class SessionCreateView(LoginRequiredMixin, CreateView):
             (self.request.user, 'http://127.0.0.1:8000/session/'+str(form.instance.video_id))
         receiver = form.instance.invitee_email
 
+
+
         send_mail(
             subject,
             message,
