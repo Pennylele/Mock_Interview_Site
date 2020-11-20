@@ -7,20 +7,6 @@
 {% block right-handbar %}<div id="meet"></div>{% endblock %}
 
 {% block content %}
-{% comment %}
-<!-- can possibly desert -->
-	<article class="media content-section">
-	  <img class="rounded-circle article-img" src="{{ session.participant.profile.image.url }}">
-	  <div class="media-body">
-	    <div class="article-metadata">
-	      <a class="mr-2" href="{% url 'user-sessions' object.participant.username %}">{{ object.participant }}</a>
-	      <small class="text-muted">{{ object.start_time | date:"F d, Y"}}</small>
-	    </div>
-	    <h2 class="article-title">{{ object.title }}</h2>
-	    <p class="article-content">{{ object.content }}</p>
-	  </div>
-	</article>
-{% endcomment %}
 
 <!-- code editor code -->
 	<div class="select">
@@ -62,9 +48,8 @@
 		</div>
 	</div>
 
-
-
 {% endblock %}
+
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>

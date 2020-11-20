@@ -84,6 +84,11 @@ class SessionCreateView(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
+# real-time editor sync
+def session_detail(request, room_name):
+    return render(request, 'mock_site/session_detail.html', {
+        'room_name': room_name
+    })
 
 # Code Editor code
 def run(cmd):

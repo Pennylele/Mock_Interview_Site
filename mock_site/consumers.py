@@ -6,7 +6,7 @@ from channels.generic.websocket import WebsocketConsumer
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['uuid']
+        self.room_name = self.scope['url_route']['kwargs']['room_names']
         self.room_group_name = 'session_%s' % self.room_name
 
         # Join room group
