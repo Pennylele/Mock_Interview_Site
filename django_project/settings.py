@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('mock_secrete_key')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['167.172.158.115', '127.0.0.1', 'localhost', 'www.themocksite.com']
+ALLOWED_HOSTS = ['167.172.158.115', '127.0.0.1', 'localhost', 'www.themocksite.com', 'themocksite.com']
 
 
 # Application definition
