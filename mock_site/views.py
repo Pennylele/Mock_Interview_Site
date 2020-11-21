@@ -54,7 +54,7 @@ class SessionCreateView(LoginRequiredMixin, CreateView):
 
         subject = 'Mock Interview Invitation'
         message = "Hello,\n\nYour friend {} is inviting you to join a mock interview session. Click {} to join this session.".format \
-            (self.request.user, 'https://themocksite/session/' + str(form.instance.video_id))
+            (self.request.user, 'https://themocksite.com/session/' + str(form.instance.video_id))
 
         send_mail(
             subject,
