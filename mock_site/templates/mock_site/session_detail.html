@@ -17,6 +17,7 @@
 		<option value="c">C</option>
 		<option value="java">Java</option>
 		<option value="javascript">JavaScript</option>
+		<option value="go">Go</option>
 	</select>
 	</div>
 
@@ -26,15 +27,15 @@
 			<label for="script_text_area">
 			</label><textarea class="form-control" id="script_text_area" rows="20"
 							  style="background-color:#dddddd4f; color:#000000;">print(123)
-	print('abc')
+print('abc')
+
+def add(a, b):
+    return a + b
 
 
-	def add(a, b):
-		return a + b
-
-
-	add(1, 2)
-	</textarea></div>
+print(add(1, 2))
+</textarea>
+		</div>
 	<!--second column-->
 		<div class="form-group2">
 			<label for="script_result"></label><textarea class="form-control" id="script_result" rows="20"

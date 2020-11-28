@@ -21,6 +21,8 @@ $(document).on("click", '#download_code', function (e) {
         fileType = 'rb';
     } else if (language === 'cpp') {
         fileType = 'cpp';
+    } else if (language === 'c') {
+        fileType = 'c';
     } else {
         fileType = 'txt';
     }

@@ -104,10 +104,14 @@ def run(cmd):
                                 )
         stdout, stderr = proc.communicate()
         return proc.returncode, stdout, stderr
-    elif language == 'cpp':
-        cpp_cmd = "g++ " + cmd[1] + " `pkg-config --cflags --libs opencv` -lm  -o out2;./out2"
-
-        s1 = subprocess.check_output(cpp_cmd, shell=True)
+    elif language in ['cpp', 'c']:
+        g_cmd = 'g++'
+        out_file = 'out_cpp'
+        if language == 'c':
+            g_cmd = 'gcc'
+            out_file = 'out_c'
+        new_cmd = g_cmd + " " + cmd[1] + " `pkg-config --cflags --libs opencv` -lm  -o " + out_file + ";./" + out_file
+        s1 = subprocess.check_output(new_cmd, shell=True)
         print("TYPE ==> ", type(s1), " size : ", sys.getsizeof(s1))
         print(s1.decode("utf-8"))
         return 1, s1, None
@@ -125,13 +129,6 @@ def run(cmd):
         input = subprocess.Popen(cmd, stdin=PIPE)
         print(proc.stdout.read())
         return proc.returncode, input, input
-    elif language == 'c':
-        proc = subprocess.Popen(cmd,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE,
-                                )
-        stdout, stderr = proc.communicate()
-        return proc.returncode, stdout, stderr
     else:
         proc = subprocess.Popen(cmd,
                                 stdout=subprocess.PIPE,

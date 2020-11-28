@@ -25,7 +25,7 @@ def add(a, b):
     return a + b
 
 
-add(1, 2)
+print(add(1, 2))
 `;
         rubyCode = `age = 32
 multiplier = 10
@@ -54,13 +54,24 @@ int main()
 }
 `;
 
+        cCode = `int main()
+{
+    // Displays the string inside quotations
+    printf("C Programming");
+    return 0;
+}
+`;
+
         code = '';
+
         if (sel.value === 'python') {
             code = pythonCode;
         } else if (sel.value === 'ruby') {
             code = rubyCode;
         } else if (sel.value === 'cpp') {
             code = cppCode;
+        } else if (sel.value === 'c') {
+            code = cCode;
         } else {
             code = '';
         }

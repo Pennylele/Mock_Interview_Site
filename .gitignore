@@ -1,10 +1,19 @@
 # Mac
 .DS_Store
 
+#Idea
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# run-time files
+out2
+out_c
+out_cpp
+static/code-editor/
 
 # C extensions
 *.so

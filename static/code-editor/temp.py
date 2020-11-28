@@ -1,10 +1,9 @@
 print(123)
-	print('abc')
+print('abc')
 
 
-	def add(a, b):
-		return a + b
+def add(a, b):
+    return a + b
 
 
-	add(1, 2)
-	
+print(add(1, 2))
