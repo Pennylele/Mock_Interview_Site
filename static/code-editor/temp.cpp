@@ -1,9 +1,7 @@
-#include <iostream>
-using namespace std;
-
-
+#include <stdio.h>
 int main()
 {
-   cout << "hellocpp";
-   return 0;
+    // Displays the string inside quotations
+    printf("C Programming");
+    return 0;
 }

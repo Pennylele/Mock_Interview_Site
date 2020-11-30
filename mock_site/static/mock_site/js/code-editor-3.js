@@ -54,7 +54,8 @@ int main()
 }
 `;
 
-        cCode = `int main()
+        cCode = `#include <stdio.h>
+int main()
 {
     // Displays the string inside quotations
     printf("C Programming");
