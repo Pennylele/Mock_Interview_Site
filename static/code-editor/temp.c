@@ -1,6 +1,7 @@
+#include <stdio.h>
 int main()
 {
     // Displays the string inside quotations
-    printf("C Program3245ming");
+    printf("C Programming");
     return 0;
 }
