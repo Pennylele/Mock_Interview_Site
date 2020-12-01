@@ -54,37 +54,6 @@ print(add(1, 2))
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
-	const uuid = window.location.pathname.split('/')[1];
-
-	const chatSocket = new WebSocket(
-		'ws://'
-		+ window.location.host
-		+ '/ws/mock_site/'
-		+ uuid
-		+ '/'
-	);
-
-
-	chatSocket.onmessage = function(e) {
-		const data = JSON.parse(e.data);
-		document.querySelector('#script_text_area').value = (data.message);
-	};
-
-	chatSocket.onclose = function(e) {
-		console.error('Chat socket closed unexpectedly');
-	};
-
-
-	document.querySelector('#script_text_area').onkeyup = function(e) {
-
-			const messageInputDom = document.querySelector('#script_text_area');
-			const message = messageInputDom.value;
-			chatSocket.send(JSON.stringify({
-				'message': message
-			}));
-	};
-</script>
-<script>
 $(document).on("click", '#run_python_script', function (e) {
     let txt = $('#script_text_area').val();
     console.log(txt);
