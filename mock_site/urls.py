@@ -3,7 +3,7 @@ from .views import (
     UserSessionListView,
     SessionDetailView,
     SessionCreateView,
-    session_detail)
+    )
 from . import views
 
 urlpatterns = [
