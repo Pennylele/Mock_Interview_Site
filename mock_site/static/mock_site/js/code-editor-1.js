@@ -15,7 +15,7 @@ $(document).on("click", '#download_code', function (e) {
     var selectDD = document.getElementById("slct");
     var language = selectDD.value;
     var fileType = 'txt';
-    if (language === 'python') {
+    if (language === 'python3') {
         fileType = 'py';
     } else if (language === 'ruby') {
         fileType = 'rb';

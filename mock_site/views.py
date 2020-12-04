@@ -97,7 +97,7 @@ def run(cmd):
     print('end')
 
     language = cmd[0]
-    if language in ['python', 'ruby']:
+    if language in ['python3', 'ruby']:
         proc = subprocess.Popen(cmd,
                                 stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE,
@@ -143,7 +143,7 @@ def result(request):
     language = request.POST['language']
     temp_path = settings.STATIC_ROOT + "/code-editor/"
     file_name = ''
-    if language == 'python':
+    if language == 'python3':
         file_name = "temp.py"
     elif language == 'java':
         file_name = "Temp.java"
