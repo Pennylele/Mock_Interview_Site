@@ -14,7 +14,10 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 import mock_site.routing
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mock_interview.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
+
+import django
+django.setup()
 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
