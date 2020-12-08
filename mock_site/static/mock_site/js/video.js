@@ -18,7 +18,6 @@ const uuid = window.location.pathname.split('/')[1];
 const chatSocket = new WebSocket(
 	'ws://'
 	+ window.location.host
-	+ ":8001/"
 	+ '/ws/mock_site/'
 	+ uuid
 	+ '/'
