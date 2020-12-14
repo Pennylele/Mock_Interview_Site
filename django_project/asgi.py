@@ -8,14 +8,16 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 """
 
 import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
+os.environ["DJANGO_SETTINGS_MODULE"] = "django_project.settings"
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 import mock_site.routing
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
-os.environ["DJANGO_SETTINGS_MODULE"] = "django_project.settings"
-os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 import django
 django.setup()
