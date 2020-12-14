@@ -19,10 +19,10 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 import mock_site.routing
 #from channels.routing import get_default_application
-import django
+# import django
 
 # application = get_default_application()
-django.setup()
+# django.setup()
 
 application = ProtocolTypeRouter({
     "http": django_asgi_app,
