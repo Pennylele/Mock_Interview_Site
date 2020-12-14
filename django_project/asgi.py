@@ -12,6 +12,7 @@ from django.core.asgi import get_asgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+os.environ["mock_secrete_key"] = "3660fed643b63b16e7bc682a1c13cbcf"
 django_asgi_app = get_asgi_application()
 
 from channels.auth import AuthMiddlewareStack
