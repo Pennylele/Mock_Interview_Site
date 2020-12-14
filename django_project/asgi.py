@@ -24,7 +24,7 @@ import django
 django.setup()
 
 application = ProtocolTypeRouter({
-    "http": get_asgi_application,
+    "http": django_asgi_app,
     "websocket": AuthMiddlewareStack(
         URLRouter(
             mock_site.routing.websocket_urlpatterns
